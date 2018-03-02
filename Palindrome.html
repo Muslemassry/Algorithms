@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+<script>
+function testFunc(str) {
+  var r = /\s/g;
+  var str = str.replace(r,'');
+
+  if (str.length == 0) return "true";
+  else if (str.length == 1) return "false";
+
+  var firstArr;
+  var secondtArr;
+  if ((str.length % 2) == 0) {
+	// even number
+	firstArr = str.substring(0, ((str.length/2))).split('');
+	secondtArr = str.substring((str.length/2), ((str.length))).split('').reverse();
+  } else {
+	// off
+	firstArr = str.substring(0, (((str.length + 1)/2) - 1)).split('');
+	secondtArr = str.substring(((str.length + 1)/2), ((str.length))).split('').reverse();
+  }	
+   
+ return (firstArr.join() === secondtArr.join());
+}
+
+alert("ey " + testFunc("ey"));
+alert("ee " + testFunc("ee"));
+alert("eye " + testFunc("eye"));
+alert("eyey " + testFunc("eyey"));
+alert("empty " + testFunc(""));
+alert("e " + testFunc("e"));
+</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+<script>
+var condition = false;
+function sortFunction(a, b) {
+    return a-b;    
+}
+    
+function WaveSorting(arr) {
+    arr = arr.sort(sortFunction);
+    var previousElement;
+    var canBeSorted = 'true';
+    var doOperation = 'splice';
+    for (i = -1; i < arr.length; i++) {
+       if ((arr[0] === arr[arr.length-1]) && arr.length > 2) {
+           canBeSorted = 'false';
+           break
+       } else {
+           if (doOperation === 'doPop') {
+               arr.pop();
+               doOperation = 'splice';
+           } else {
+               arr.splice(0, 1);
+               doOperation = 'doPop';
+           }
+       }
+    }
+    
+    return canBeSorted;
+}
+
+alert("[0, 1, 2, 4, 1, 1, 1] " +  WaveSorting([0, 1, 2, 4, 1, 1, 1]));
+
+</script>
+</body>
+</html>
+

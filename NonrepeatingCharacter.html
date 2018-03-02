@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+<script>
+function additivePersistence(str) {
+    re2 = /([a-z])\1{1,}/gi;
+    mutatedStr = str.split("").sort().join("").trim();
+    function doPeration(match, offset, string) {
+        return '';
+    }
+    
+    mutatedStr = mutatedStr.replace(re2, doPeration);
+    if (mutatedStr !== undefined && mutatedStr.length > 0) {
+        if (mutatedStr.length == 1) {
+            return mutatedStr;
+        } else {
+            var firstCharacterIndex = undefined;
+            for (i = 0; i < mutatedStr.length; i++) {
+                var indexTemp = str.indexOf(mutatedStr.charAt(i))
+                if (firstCharacterIndex == undefined || indexTemp < firstCharacterIndex) firstCharacterIndex = indexTemp;
+            }
+            
+            return str.charAt(firstCharacterIndex);
+        }
+    } else return -1;    
+}
+
+alert("agettkgaeee: " + additivePersistence("agettkgaeee"));
+</script>
+</body>
+</html>

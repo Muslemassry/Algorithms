@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+<script>
+function testFunc(str) {
+  str = 0.00 + str;
+  var finalString = "";
+  for (i = 0; i < 5; i++) {
+    if (i < str &&  (str-i) >= 0.75) {
+      finalString += "full ";
+    } else if (i < str && (str-i) >= 0.25) {
+      finalString += "half ";
+    } else {
+      finalString += "empty ";
+    }
+
+    finalString.trim();
+  }
+
+  return finalString;
+}
+
+alert("2.75 " + testFunc("2.75"));
+alert("3.25 " + testFunc("3.25"));
+alert("0.30 " + testFunc("0.30"));
+alert("5.0 " + testFunc("5.0"));
+</script>
+</body>
+</html>

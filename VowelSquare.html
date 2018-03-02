@@ -1,0 +1,30 @@
+c<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+<script>
+var vowels = 'ouiea'
+function VowelSquare(strArr) {
+   for (y = 0; y < strArr.length - 1; y++) {
+       for (x = 0; x < strArr[y].length - 1; x++) {
+           if (vowels.indexOf(strArr[y].charAt(x)) != -1 
+               && vowels.indexOf(strArr[y].charAt(x+1)) != -1
+               && vowels.indexOf(strArr[y+1].charAt(x)) != -1
+               && vowels.indexOf(strArr[y+1].charAt(x+1)) != -1)
+               return (y + '-' + x);
+       }
+   }
+    
+    return 'not found';
+}
+
+alert('["abcd", "eikr", "oufj"]: ' + VowelSquare(["abcd", "eikr", "oufj"]));
+alert('["aqrst", "ukaei", "ffooo"]: ' + VowelSquare(["aqrst", "ukaei", "ffooo"]));
+alert('["gg", "ff"]: ' + VowelSquare(["gg", "ff"]));
+</script>
+</body>
+</html>

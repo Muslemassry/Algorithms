@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+<script>
+const reducer = (accumulator, currentValue) => accumulator + currentValue;
+    
+function  MeanMode(arr) {
+    if (arr.length % 2 == 0) {
+        var mode1 = arr.length / 2
+        var mode2 = mode1-1;
+        return (arr[mode1] == arr[mode2] && arr[mode2] == (arr.reduce(reducer) / arr.length)) ? 1 : 0;
+    } else {
+        var mode1 = ((arr.length + 1)/ 2) - 1;
+        return ((arr.reduce(reducer)/arr.length) == arr[mode1]) ? 1 : 0;
+    }
+    
+}
+
+//alert("[5, 3, 3, 3, 1] will be: " +  MeanMode([5, 3, 3, 3, 1]));
+//alert("[1, 2, 3] will be: " +  MeanMode([1, 2, 3]));
+alert("[4,4,4,6,2] will be: " +  MeanMode([4,4,4,6,2]));
+//alert("[10,10] will be: " +  MeanMode([10,10]));    
+</script>
+</body>
+</html>

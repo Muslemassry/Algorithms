@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Creating a JavaScript Variable.</p>
+
+<p id="demo"></p>
+
+<script>
+function offLineMinimum(strArr) {
+	var numbers = undefined;
+    var arr = [];
+    for (i = 0; i < strArr.length; i++) {
+        if (strArr[i] !== 'E') {
+            arr.push(strArr[i]);
+        } else {
+            arr = arr.sort(function(a, b){return a-b});
+            if (arr.length > 0) {
+                if (numbers) {
+                    numbers += ','+arr.shift();
+                } else {
+                    numbers = ''+arr.shift();
+                }
+            }
+        }
+    }
+    
+    return numbers;
+}
+
+
+//alert("1:30am, 2:30am : " + CountingMinutesI("1:30am, 2:30am"));
+//alert("11:30pm, 1:30am : " + CountingMinutesI("11:30pm, 1:30am"));
+//alert("00:00am, 1:30am : " + CountingMinutesI("00:00am, 1:30am"));
+//alert("1:00pm, 1:30pm : " + CountingMinutesI("1:00pm, 1:30pm"));
+alert('"5": ' + offLineMinimum(["4","E","1","E","2","E","3","E"]));
+
+</script>
+
+</body>
+</html>

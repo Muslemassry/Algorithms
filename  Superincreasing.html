@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+<script>
+function Superincreasing(arr) {
+    var isSuperIncreasing = 'true';
+    
+    if (arr.lenght > 1) {
+        var result = arr[0];
+        for (i = 1; i < arr.length; i++) {
+            if (arr[i] <= result) {
+                isSuperIncreasing = 'false';
+                break;
+            } else {
+                result += arr[i];
+            }
+        }
+    }
+    
+    return isSuperIncreasing;
+}
+
+alert("[1,2,3,4] " +  Superincreasing([1,2,3,4]));
+    alert("[1,2,3,4] " +  Superincreasing([1,2,3,4]));
+
+</script>
+</body>
+</html>

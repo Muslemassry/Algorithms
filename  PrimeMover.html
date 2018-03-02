@@ -1,0 +1,50 @@
+c<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+<script>
+function isPrime(number) {
+    var index = Math.floor(Math.sqrt(number));
+    var isPrime = true;
+    if (index % 2 == 0) index--;
+    while(index > 1) {
+        if (number % index == 0) {
+            isPrime = false;
+            break;
+        }
+        
+        index-=2;
+    }
+    
+    return isPrime;
+}
+
+function PrimeMover(num) { 
+  // code goes here  
+    if (num == 1) return 2;
+    if (num == 2) return 3;
+    
+    count = 2;
+    i = 5;
+    while (i < 10000) {
+        if (isPrime(i)) {
+            count++;
+            if (count == num) return i;
+        }
+        
+        i+= 2;
+    }
+    
+  return -1; 
+         
+}
+
+alert('9: ' + PrimeMover(9));
+
+</script>
+</body>
+</html>

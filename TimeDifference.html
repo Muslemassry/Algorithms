@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Creating a JavaScript Variable.</p>
+
+<p id="demo"></p>
+
+<script>
+function CountingMinutesI(str) {
+	var times = [];
+	reNumbers = /[0-9]+/g;
+	var arr1 = str.match(reNumbers);
+	reAmPm = /am|pm/gi;
+	var arr2 = str.match(reAmPm);
+	
+	if (arr2[0].indexOf("pm") != -1) {
+		times.push(((+arr1[0] + +12) * +60) + +arr1[1]);
+	} else {
+        if (arr1[0] == 12) arr1[0] = 0;
+		times.push((+arr1[0] * +60) + +arr1[1]);
+	}
+	
+	if (arr2[1].indexOf("pm") != -1) {
+		times.push(((+arr1[2] + +12) * +60) + +arr1[3]);
+	} else {
+        if (arr1[2] == 12) arr1[2] = 0;
+		times.push(((+arr1[2]) * +60) + +arr1[3]);
+	}
+	
+	if (times[0] > times[1]) {
+	    return (((24*60) - times[0]) + +times[1]);
+	} else {
+		return times[1] - times[0];
+	}
+}
+
+function TimeDifference(strArr) {
+	var smallestDiff;
+	function sortFunc(a, b) {
+	  return a-b;
+	}
+	
+	var differences = [];
+	
+	for (i = 0; i < strArr.length; i++) {
+		for (j = 0; j < strArr.length; j++) {
+			if (j != i) {
+                var tempDiff = undefined;
+                if (i == 1 && j == 3)
+				    tempDiff = CountingMinutesI(strArr[i] +','+ strArr[j]);
+                else 
+                    tempDiff = CountingMinutesI(strArr[i] +','+ strArr[j]);
+      				
+                if (! differences.includes(tempDiff)) differences.push(tempDiff);			
+			}
+		}
+	}
+
+	differences.sort(sortFunc);	
+	return differences[0];
+}
+
+//alert("1:30am, 2:30am : " + CountingMinutesI("1:30am, 2:30am"));
+//alert("11:30pm, 1:30am : " + CountingMinutesI("11:30pm, 1:30am"));
+//alert("00:00am, 1:30am : " + CountingMinutesI("00:00am, 1:30am"));
+//alert("1:00pm, 1:30pm : " + CountingMinutesI("1:00pm, 1:30pm"));
+alert('"2:10pm", "1:30pm", "10:30am", "4:42pm": ' + TimeDifference(["2:10pm", "1:30pm", "10:30am", "4:42pm"]));
+
+</script>
+
+</body>
+</html>

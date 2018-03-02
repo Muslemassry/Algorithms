@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+<script>
+function testFunc(str) {
+  var regexO = /o/gi;
+  var regexX = /x/gi;
+  var oMatched = str.match(regexO);
+  var xMatched = str.match(regexX);
+  var oCount = 0;
+  var xCount = 0;
+  
+  if (oMatched) {
+    oCount = oMatched.length;
+  }
+
+  if (xMatched) {
+    xCount = xMatched.length;
+  }
+
+  if (xCount == oCount) return "true";
+  else 			return "false"; 
+}
+
+alert(testFunc(" "));
+alert(testFunc("x "));
+alert(testFunc("X o "));
+alert(testFunc("X o X"));
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+<script>
+function testFunc(str) {
+ var totalSum = 0;
+ function doSum(match, offset, string) {
+    totalSum += +match;
+    return match;
+  }
+ var r = /([0-9])+/g;
+ //var arr = str.match(r);
+ str.replace(r, doSum);  
+ return (totalSum);
+}
+
+alert("ey11asd2 " + testFunc("ey11asd2"));
+alert("ee111 " + testFunc("ee111"));
+alert("11eye " + testFunc("11eye"));
+alert("1ey1ey " + testFunc("1ey1ey"));
+alert("empty " + testFunc(""));
+alert("1e " + testFunc("1e"));
+alert("e " + testFunc("e"));
+alert("1e1 " + testFunc("1e1"));
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+c<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+<script>
+function sortF(a,b) {
+    return getTimeValue(a.split('-')[0]) - getTimeValue(b.split('-')[0]);
+}
+
+function  SwapII(str) {
+    function swapCharacterCase(match, offset, string) {
+        if (match == match.toUpperCase()) {
+            return match.toLowerCase();
+        } else {
+            return match.toUpperCase();
+        }
+    }
+    
+    function swapDigits(match, offset, string) {        
+        return match.charAt(match.length-1) + match.substring(1, match.length - 1) + match.charAt(0)
+    }
+    
+    str = str.replace(/[a-z]/gi, swapCharacterCase);
+    str = str.replace(/\d[a-z]+\d/gi, swapDigits);
+    return str;
+}
+alert('4hELLO6 -8wORLD, 7 YES3: ' + SwapII("4hELLO6 -8wORLD, 7 YES3"));
+
+</script>
+</body>
+</html>

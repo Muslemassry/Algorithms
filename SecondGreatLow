@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+<script>
+function sortNumber(a,b) {
+    return a - b;
+}
+
+function testFunc(arr) {
+    arr.sort(sortNumber);
+    var existing = {}, result = [], current;
+    for ( i = 0; i < arr.length; i++) {
+	current = arr[i];
+	if(!existing.hasOwnProperty(current)) { 
+	   result.push(current);
+	   existing[current] = true; //any value will do
+	}
+    }
+
+    if (result) {
+    	if (result.length > 1) {
+            return result[1] + ' ' + result[result.length-2]; 
+        } else {
+           return result[0] + ' ' + result[0]; 
+        }
+    } else {
+    	return '-1';
+    }
+ 
+}
+
+alert('10, 20, 20, 10, 11 === > ' + testFunc([10, 20, 20, 10, 11]));
+alert('10, 10 === > ' + testFunc([10, 10]));
+alert('10 === > ' + testFunc([10]));
+alert('1, 42, 42, 180 === > ' + testFunc([1, 42, 42, 180]));
+alert('4, 90 === > ' + testFunc([4, 90]));
+alert('7, 7, 12, 98, 106 === > ' + testFunc([7, 7, 12, 98, 106]));
+</script>
+</body>
+</html>

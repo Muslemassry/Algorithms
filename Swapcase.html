@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+<script>
+function testFunc(str) {    
+    function swapCharacterCase(match, offset, string) {
+        if (match == match.toUpperCase()) {
+            return match.toLowerCase();
+        } else {
+            return match.toUpperCase();
+        }
+    }
+    
+    return str.replace(/[a-z]/gi, swapCharacterCase);
+}
+
+alert("Hello " + testFunc("Hello"));
+alert("ee111 " + testFunc("ee111"));
+alert("HellO " + testFunc("HellO"));
+alert("1111 " + testFunc("1111"));
+alert("My naMe is Ali " + testFunc("My naMe is Ali"));
+</script>
+</body>
+</html>

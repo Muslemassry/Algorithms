@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+<script>
+const reducer = (accumulator, currentValue) => accumulator + currentValue;
+    
+function  ThreeNumbers(str) {
+    if (str.match(/([0-9]){3}/gi)) return 'false';
+    var arr = str.split(' ');
+    for (i = 0; i < arr.length; i++) {
+        arr[i] = arr[i].split('').sort().join('');
+        if (arr[i].match(/([0-9])\1{1,}/)) return 'false';
+    }
+    
+    return 'true';
+}
+
+//alert("[5, 3, 3, 3, 1] will be: " +  MeanMode([5, 3, 3, 3, 1]));
+//alert("[1, 2, 3] will be: " +  MeanMode([1, 2, 3]));
+alert("2hell6o3 wor6l7d2 will be: " +  ThreeNumbers('2hell6o3 wor6l7d2'));
+alert("hell268o w6or2l4d will be: " +  ThreeNumbers('hell268o w6or2l4d'));
+alert("2a3b5 w1o2rl3d g1gg92 will be: " +  ThreeNumbers('2a3b5 w1o2rl3d g1gg92'));
+alert("21aa3a ggg4g4g6ggg will be: " +  ThreeNumbers('21aa3a ggg4g4g6ggg'));
+
+
+</script>
+</body>
+</html>

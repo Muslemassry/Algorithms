@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+<script>
+function sortOnLength(a,b) {
+    return b.length - a.length;
+}
+
+
+function testFunc(strArr) {
+   // re = /(\w)+/gi;
+   // var arr = str.match(re);
+   var arr = strArr.sort(sortOnLength);
+   return arr[2];
+}
+
+alert('testFunc(["coder","byte","code"]): ' + testFunc(["coder","byte","code"]));
+alert('testFunc(["abc","defg","z","hijk"]): ' + testFunc(["abc","defg","z","hijk"]));
+alert('testFunc(["hello", "world", "after", "all"]): ' + testFunc(["hello", "world", "after", "all"]));
+alert('testFunc(["hello", "world", "before", "all"]): ' + testFunc(["hello", "world", "before", "all"]));
+</script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+c<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+<script>
+function sortF(a,b) {
+    return getTimeValue(a.split('-')[0]) - getTimeValue(b.split('-')[0]);
+}
+
+function getTimeValue(timeStr) {
+    re = /(\d)+/g;
+    var timeValues = timeStr.match(re);
+    if (timeValues[0] == 12) {
+        timeValues[0] = 0;
+    }
+    
+    var time = (timeValues[0] * 60) + +timeValues[1];
+    if (timeStr.indexOf('PM') != -1) {
+        time += (12*60);
+    }
+    
+    return time;
+}
+    
+function periodToTimeFormat(period) {
+    var hours = '00';
+    var minutes = '00';
+    if (period > 60) {
+        hours = '' + Math.floor(period / 60);
+        if (hours.length < 2) {
+            hours = '0' + hours;
+        }
+        
+        period = period - (Math.floor(period / 60) * 60);
+    }
+    
+    if (period < 10) {
+        minutes = '0' + period;
+    } else {
+        minutes = '' + period;
+    }
+    
+    return hours + ':' + minutes;
+}
+    
+function  MostFreeTime(strArr) {
+    strArr = strArr.sort(sortF);
+    var longestFreeTime = 0;
+    var lastTime;
+    var endTime;
+    var startTime;
+    for(i = 0; i < strArr.length; i++) {
+        if (lastTime) {
+            startTime = getTimeValue((strArr[i].split('-'))[0]);
+            if ((startTime - lastTime) > longestFreeTime) {
+                longestFreeTime = (startTime - lastTime);
+            }
+            
+        }
+        
+        endTime = getTimeValue((strArr[i].split('-'))[1]);
+        lastTime = endTime;
+    }
+    
+    return periodToTimeFormat(longestFreeTime)
+}
+alert('"12:15PM-02:00PM","09:00AM-10:00AM","10:30AM-12:00PM": ' + MostFreeTime(["12:15PM-02:00PM","09:00AM-10:00AM","10:30AM-12:00PM"]));
+alert('"12:15PM-02:00PM","09:00AM-12:11PM","02:02PM-04:00PM": ' + MostFreeTime(["12:15PM-02:00PM","09:00AM-12:11PM","02:02PM-04:00PM"])); 
+alert('"10:00AM-12:30PM","02:00PM-02:45PM","09:10AM-09:50AM": ' + MostFreeTime(["10:00AM-12:30PM","02:00PM-02:45PM","09:10AM-09:50AM"]));   
+
+</script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+c<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+<script>
+function sortNumber(a,b) {
+    return a - b;
+}
+    
+function ScaleBalancing(strArr) {
+    var scale = strArr[0].match(/\d+/gi).sort(sortNumber);
+    var weights = strArr[1].match(/\d+/gi).sort(sortNumber)
+    for (i = 0; i < weights.length; i++) {
+        if (Number.parseInt(scale[1]) == (Number.parseInt(scale[0]) + Number.parseInt(weights[i]))) {
+            return (weights[i]);
+        }
+    }
+    
+    for (i = 0; i < weights.length; i++) {
+        for (j = i+1; j < weights.length; j++) {
+            if (Number.parseInt(scale[1]) == (Number.parseInt(scale[0]) + Number.parseInt(weights[i]) + Number.parseInt(weights[j]))) {
+                return (weights[i] + ',' + weights[j]);
+            }
+        }
+    }
+    
+    for (i = 0; i < weights.length; i++) {
+        for (j = 0; j < weights.length; j++) {
+            if (i != j) {
+                if ((Number.parseInt(scale[0]) + Number.parseInt(weights[j])) == (Number.parseInt(scale[1]) + Number.parseInt(weights[i]))) {
+                    return (weights[i] < weights[j]) ? weights[i] + ',' + weights[j] : weights[j] + ',' + weights[i]
+                }
+            }
+            
+        }
+    }
+    
+    return 'not possible';
+}
+
+alert('"[4, 3]", "[1, 2, 7, 7]": ' + ScaleBalancing(["[4, 3]", "[1, 2, 7, 7]"]));
+alert('"[13, 4]", "[1, 2, 3, 6, 14]": ' + ScaleBalancing(["[13, 4]", "[1, 2, 3, 6, 14]"]));
+alert('"[5, 9]", "[1, 2, 6, 7]": ' + ScaleBalancing(["[5, 9]", "[1, 2, 6, 7]"]));
+</script>
+</body>
+</html>

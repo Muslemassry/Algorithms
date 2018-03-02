@@ -1,0 +1,47 @@
+c<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+<script>
+function sortF(a,b) {
+    return getTimeValue(a.split('-')[0]) - getTimeValue(b.split('-')[0]);
+}
+
+function addDash(match, offset, string) {
+    return match.charAt(0) + '-' + match.charAt(1);
+}
+
+function addAstrik(match, offset, string) {
+    return match.charAt(0) + '*' + match.charAt(1);
+}
+
+function  PrimeTime(num) {
+    if (num == 1 || num == 2 || num == 3) {
+        return 'true';
+    } else if (Number.isInteger(Math.sqrt(num))) {
+        return 'false';
+    }
+    
+    var isPrime = 'true';
+    var start = Math.floor(Math.sqrt(num));
+    
+    for (i = start; i > 1; i--) {
+        if (num % i == 0) {
+            isPrime = 'false';
+            break;
+        }
+    }
+    
+    return isPrime;
+}
+    
+alert('"19": ' + PrimeTime(19));
+
+
+</script>
+</body>
+</html>
