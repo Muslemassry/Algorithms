@@ -1,0 +1,45 @@
+c<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+<script>
+function sortF(a,b) {
+    return getTimeValue(a.split('-')[0]) - getTimeValue(b.split('-')[0]);
+}
+
+function addDash(match, offset, string) {
+    return match.charAt(0) + '-' + match.charAt(1);
+}
+
+function addAstrik(match, offset, string) {
+    return match.charAt(0) + '*' + match.charAt(1);
+}
+
+function  DashInsertII(str) {
+    odRe = /([13579]){2}/g;
+    evenRe = /([2468]){2}/g;
+
+    var arr = str.match(odRe);
+    while (arr) {
+        str = str.replace(odRe, addDash);
+        arr = str.match(odRe);
+    }
+    
+    arr = str.match(evenRe);
+    while (arr) {
+        str = str.replace(evenRe, addAstrik);
+        arr = str.match(evenRe);
+    }
+    
+    return str;
+}
+    
+alert('"454679333": ' + DashInsertII("454679333"));
+
+</script>
+</body>
+</html>

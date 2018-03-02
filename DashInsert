@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+<script>
+function testFunc(str) {
+  re2 = /[13579]{2}/gi;
+  var arr = str.match(re2);
+  function upperToHyphenLower(match, offset, string) {
+    return match.charAt(0) + '-' + match.charAt(1);
+  }
+  
+  while (arr) {
+  	str = str.replace(re2, upperToHyphenLower);
+	arr = str.match(re2);
+  }
+  
+  //re3 = /^-/g;
+  //str = str.replace(re3, '');
+  return str;
+}
+
+alert(testFunc('112232459132'))
+</script>
+</body>
+</html>

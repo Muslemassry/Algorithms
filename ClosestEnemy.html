@@ -1,0 +1,63 @@
+c<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+<script>
+function sortNumber(a,b) {
+    return a - b;
+}
+    
+function ClosestEnemy(arr) {
+    if (arr.indexOf(2) == -1) return 0;
+    var indexOf1 = arr.indexOf(1);
+    var afterArray;
+    var indexOfAfter2;
+    if (indexOf1 < arr.length - 1) {
+        afterArray = arr.slice(indexOf1+1, arr.length);
+        indexOfAfter2 = afterArray.indexOf(2);
+    }
+     
+    var beforeArray;
+    var indexOfBefore2;
+    if (indexOf1 > 0) {
+        beforeArray = arr.slice(0, indexOf1).reverse();
+        indexOfBefore2 = beforeArray.indexOf(2);
+        if (indexOfBefore2 != -1) {
+            indexOfBefore2 = beforeArray.length - indexOfBefore2 - 1; 
+        }
+    }
+    
+    var diffAfter;
+    if (indexOfAfter2 && indexOfAfter2 != -1) {
+        diffAfter = indexOfAfter2 +1;
+    }
+    
+    var diffBefore;
+    if (indexOfBefore2 && indexOfBefore2 != -1) {
+        diffBefore = indexOf1 - indexOfBefore2;
+    }
+    
+    if (diffBefore && diffAfter) {
+        if (diffBefore < diffAfter)
+            return diffBefore;
+        else 
+            return diffBefore;
+    } else if (diffBefore) {
+        return diffBefore;
+    } else if (diffAfter) {
+        return diffAfter;
+    }
+    
+    return 0;
+}
+
+alert('0, 0, 1, 0, 0, 2, 0, 2: ' + ClosestEnemy([0, 0, 1, 0, 0, 2, 0, 2]));
+alert('1, 0, 0, 0, 2, 2, 2: ' + ClosestEnemy([1, 0, 0, 0, 2, 2, 2]));
+alert('2, 0, 0, 0, 2, 2, 1, 0: ' + ClosestEnemy([2, 0, 0, 0, 2, 2, 1, 0]));
+</script>
+</body>
+</html>

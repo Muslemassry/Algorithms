@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+<script>
+function sortNumber(a,b) {
+    return a - b;
+}
+
+function test(num, next) {
+ if (next + num > 20 || next === false) 
+	return false;
+ else if ((next + num) === 20) 
+	return true;	
+ else return (next + num);
+}
+
+function checkArith(arr, largestNo) {
+  var tempNo = 0;
+  return arr.reduce(test);
+}
+
+function testFunc(str) {
+  str = str.sort(sortNumber);
+  var largestNo = str[str.length -1];
+  if (checkArith(str.slice(0, str.length-1), largestNo) !== false) {
+    return "true";
+  } else {
+    return "false";
+  }
+}
+
+function ArrayAdditionI(arr) { 
+  
+  // sort array ascending
+  arr = arr.sort( function(a,b){return a - b});
+  
+  var max = arr.pop();
+  
+  function lookForSolution(){
+    function search(sum,i) {
+      if ( sum == max ) {
+        return true;
+      } else if ( sum > max || i == arr.length ) {
+        return null;
+      } else {
+        return search(sum + arr[i],i + 1) || search(sum,i + 1);
+      }
+    }
+    
+    // start search with sum of zero in position zero:
+    return search(0,0);
+  }
+  
+  return lookForSolution() || false; 
+         
+}
+
+function getSum(sum, arr, i) {
+	if (i == arr.length) return sum;
+	else return (getSum((sum + arr[i]), arr, (i+1)));
+}
+function recursiveAdd(arr) {
+  arr = arr.sort( function(a,b){return a - b});
+  return getSum(0, arr, 0);
+}
+
+alert(recursiveAdd([1,6,4]));
+</script>
+</body>
+</html>
+
+

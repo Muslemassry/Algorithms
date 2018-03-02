@@ -1,0 +1,47 @@
+c<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+<script>
+function sortF(a,b) {
+    return a-b;
+}
+
+function LetterCount(str) { 
+  // code goes here  
+    var arrStr = str.split(' ');
+    var longestLength = 0;
+    var longestWord = -1;
+    var re = /([0-9a-z])\1{1,}/gi;
+    var tempStr;
+    var tempArr;
+    var tempLength;
+    for (i = 0; i < arrStr.length; i++) {
+        tempStr = arrStr[i].split('').sort().join('');
+        tempArr = tempStr.match(re);
+        if (tempArr) {
+            tempLength = 0;
+            for(j = 0; j < tempArr.length; j++) {
+                tempLength += tempArr[j].length;
+            }
+            
+            if (tempLength > longestLength) {
+                longestLength = tempLength;
+                longestWord = arrStr[i];
+            }
+        }
+    }
+    
+    return longestWord;
+         
+}
+
+alert('Today, is the greatest day ever!: ' + LetterCount('Today, is the greatest day ever!'));
+
+</script>
+</body>
+</html>

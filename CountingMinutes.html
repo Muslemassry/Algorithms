@@ -1,0 +1,65 @@
+c<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+<script>
+function sortF(a,b) {
+    return getTimeValue(a.split('-')[0]) - getTimeValue(b.split('-')[0]);
+}
+
+function getTimeValue(timeStr, nextDay) {
+    re = /(\d)+/g;
+    var timeValues = timeStr.match(re);
+    if (timeValues[0] != 12 && nextDay) {
+        timeValues[0] = parseInt(24) + +timeValues[0];
+    } else if (timeValues[0] == 12 && nextDay) {
+        timeValues[0] = parseInt(24);
+    } else if (timeValues[0] == 12 && !nextDay) {
+        timeValues[0] = 0;
+    } 
+    
+    var time = (timeValues[0] * 60) + +timeValues[1];
+    if (timeStr.indexOf('pm') != -1) {
+        time += (12*60);
+    }
+    
+    return time;
+}
+    
+
+    
+function  CountingMinutes(str) {
+    var minutesDiff = 0;
+    var timesArr = str.split('-');
+    if (timesArr[0].indexOf('pm') != -1 && timesArr[1].indexOf('am') != -1) {
+        // in two days
+        minutesDiff = getTimeValue(timesArr[1], false) + ((24*60) - getTimeValue(timesArr[0], false))
+    } else if ((timesArr[0].indexOf('pm') != -1 && timesArr[0].indexOf('pm') != -1) 
+              || (timesArr[0].indexOf('am') != -1 && timesArr[0].indexOf('am') != -1)) {
+        if (getTimeValue(timesArr[0], false) > getTimeValue(timesArr[1], false)) {
+            minutesDiff = getTimeValue(timesArr[1], true) - getTimeValue(timesArr[0], false);
+        } else {
+            // in the same day
+            minutesDiff = getTimeValue(timesArr[1], false) - getTimeValue(timesArr[0], false);
+        }
+        
+    } else {
+        // in the same day
+        minutesDiff = getTimeValue(timesArr[1], false) - getTimeValue(timesArr[0], false);
+    }
+    
+    
+    return minutesDiff;
+}
+
+alert('"1:23am-1:08am": ' + CountingMinutes("1:23am-1:08am"));
+alert('"1:00pm-11:00am": ' + CountingMinutes("1:00pm-11:00am"));
+alert('"9:00am-10:00am": ' + CountingMinutes("9:00am-10:00am"));
+alert('"12:30pm-12:00am": ' + CountingMinutes("12:30pm-12:00am"));
+</script>
+</body>
+</html>

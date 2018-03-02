@@ -1,0 +1,40 @@
+c<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+<script>
+function sortNumber(a,b) {
+    return a - b;
+}
+    
+function Division(num1,num2) {
+    var bigNum = (num1 > num2) ? num1 : num2;
+    var smallNum = (num1 > num2) ? num2 : num1;
+    
+    if ((bigNum % smallNum) == 0) return smallNum;
+    
+    var key;
+    if ((smallNum % 2) == 0) {
+        key = smallNum/2;
+    } else {
+        key = (smallNum - 1)/2;
+    }
+    
+    while (key > 0) {
+        if ((smallNum % key == 0) && (bigNum % key == 0)) return key;
+        key--;
+    }
+    
+    return 1;
+}
+
+alert('36,54: ' + Division(36,54));
+alert('12,16: ' + Division(12,16));
+alert('3,7: ' + Division(3,7));
+</script>
+</body>
+</html>

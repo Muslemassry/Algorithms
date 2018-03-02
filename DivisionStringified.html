@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+<script>
+const reducer = (accumulator, currentValue) => accumulator + currentValue;
+    
+function  DivisionStringified(num1,num2) {
+    var str = '' + Math.round(num1/num2);
+    if (str.length > 3) {
+        var rounds;
+        if (str.length % 3 == 0) {
+            rounds = Math.floor((str.length-1) / 3);
+        } else {
+            rounds = Math.floor(str.length / 3);
+        }
+
+        var arr = str.split('');
+        for (index = 1; index < (rounds+1); index++) {
+            arr.splice((str.length - (3 * index)), 0, ",");
+        }
+        
+        str = arr.join('');
+    }
+    
+    return str;
+}
+
+//alert("[5, 3, 3, 3, 1] will be: " +  MeanMode([5, 3, 3, 3, 1]));
+//alert("[1, 2, 3] will be: " +  MeanMode([1, 2, 3]));
+alert("  9112 , 2 will be: " +  DivisionStringified( 9112 , 2));
+alert("  503394930, 43 will be: " +  DivisionStringified( 503394930, 43));
+alert("  101077282, 21123 will be: " +  DivisionStringified( 101077282, 21123));
+alert("  125487503394930, 1 will be: " +  DivisionStringified( 125487503394930, 1));
+
+</script>
+</body>
+</html>

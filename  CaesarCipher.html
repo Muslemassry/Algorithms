@@ -1,0 +1,36 @@
+c<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+<script>
+function  CaesarCipher(str,num) { 
+    function moveToNumOfSteps(match, offset, string) {
+        var charCode = match.charCodeAt(0);
+        if ((charCode < 91) && (charCode + num > 90)) {
+            charCode = charCode + num - 90;
+            charCode += 64;
+        } else if (charCode + num > 122) {
+            charCode = charCode + num - 122;
+            charCode += 96;
+        } else {
+            charCode += num;
+        }
+        
+        return String.fromCharCode(charCode);
+    }
+    re = /\w/gi;
+    
+    if (num == 0) return str;
+    
+    return str.replace(re, moveToNumOfSteps);
+}
+
+alert('byte, 13: ' + CaesarCipher('byte', 13));
+
+</script>
+</body>
+</html>

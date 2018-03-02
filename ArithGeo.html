@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+<script>
+function testFunc(arr) {
+  if (arr.length < 3) return -1;
+
+  var key1 = Math.abs(arr[1] - arr[0]);
+  var isArth = true;
+  var isGeo = true;
+  var key2 = Math.floor(arr[1] / arr[0]); 
+  for (i = 1; i < ((arr.length)-1) ; i++) {
+    if (Math.abs(arr[i+1] - arr[i]) !== key1) {
+	isArth = false;
+    }
+   
+    if (Math.floor(arr[i+1] / arr[i]) !== key2) {
+	isGeo = false;
+    }
+    
+    if (isArth == false && isGeo == false) {
+    	break;
+    }
+  }
+
+  if (isArth == true) return "Arithmetic";
+  if (isGeo  == true) return "Geometric"; 
+  return -1;
+
+}
+alert("ey 1 " + testFunc([-1,2,5,8]));
+alert("ey 2 " + testFunc([-2,4,-8,16]));
+alert("ey 2 " + testFunc([2,4,16,24]));
+</script>
+</body>
+</html>

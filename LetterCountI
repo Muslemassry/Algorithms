@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+<script>
+function testFunc(str) {
+  re1 = /(\w+)/gi;
+  var arr1 = str.match(re1);
+  var largetstWord = '-1';
+  var largestLenght = 0;
+  if  (arr1) {
+    re2 = /([a-z])\1{1,}/gi;
+    var arr2;
+    var tempWord;
+    var tempLenght;
+    for (i = 0; i < arr1.length; i++) {
+      tempWord = arr1[i];
+      var tempStr = arr1[i].split("").sort().join("");
+      arr2 = tempStr.match(re2);
+      tempLenght = 0;
+      if (arr2) {
+        for (j = 0; j < arr2.length; j++) {
+          tempLenght += arr2[j].length;       
+        }
+        
+        if (tempLenght > largestLenght) {
+	   largetstWord = tempWord;
+	   largestLenght = tempLenght;
+        }      
+      }       
+    }
+  }
+
+  return largetstWord;
+}
+
+alert(testFunc("Hello apple pie"));
+</script>
+</body>
+</html>

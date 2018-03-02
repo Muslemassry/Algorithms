@@ -1,0 +1,36 @@
+c<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+<script>
+function sortNumber(a,b) {
+    return b - a;
+}
+    
+function doOperation(i, accumelatedValue, arrOfNum, key) {
+    if (accumelatedValue == key) {
+        return true;
+    } else if (i >= arrOfNum.length) {
+        return false;
+    } else {
+        return doOperation((i+1), (accumelatedValue + arrOfNum[i]), arrOfNum, key) || doOperation((i+1), accumelatedValue, arrOfNum, key);
+    }
+    
+}
+    
+function ArrayAddition(arr) {
+    arr.sort(sortNumber);
+    var maxNumber = arr.shift();
+    return (doOperation(0, 0, arr, maxNumber));
+}
+
+alert('4, 6, 23, 10, 1, 3: ' + ArrayAddition([4, 6, 23, 10, 1, 3]));
+alert('5,7,16,1,2: ' + ArrayAddition([5,7,16,1,2]));
+alert('3,5,-1,8,12: ' + ArrayAddition([3,5,-1,8,12]));
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+<script>
+function HammingDistance(str) {
+ function toBits(char) {
+   return char.charCodeAt(0).toString(2);
+ }
+
+ str = str.split('').map(toBits).join();
+ return (str);
+}
+
+alert("ab" + HammingDistance("ab"));
+alert("a" + HammingDistance("a"));
+</script>
+</body>
+</html>
