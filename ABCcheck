@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+<script>
+function testFunc(str) {
+  var r1 = /a[a-zA-Z0-9\s]{3}b/gi;
+  var matches = str.match(r1);
+
+  if (matches) {
+    return "true";
+  } else {
+    return "false";
+  }
+}
+
+alert(testFunc("hello=ahm a - bfreak andbbmoA tebrlucher"));
+</script>
+</body>
+</html>
