@@ -1,0 +1,47 @@
+#include <stdio.h> 
+#include <string.h>
+#include <stdlib.h>
+
+int getXFromPair(char* str) {
+   return str[1]-'0';
+}
+
+int getYFromPair(char* str) {
+    return str[3]-'0';
+}
+void EightQueens(char * stringArr[]) { 
+  // code goes here
+  //char* str = stringArr[2];
+  int xDif = 0;
+  int yDif = 0;
+  char* stri;
+  char* strj;
+  
+  for (int i = 0; i < 7; i++) {
+      for (int j = i+1; j < 8; j++) {
+          stri = stringArr[i];
+          strj = stringArr[j];
+          xDif = abs(getXFromPair(stri) - getXFromPair(strj));
+          yDif = abs(getYFromPair(stri) - getYFromPair(strj));
+          if ((xDif == 1 && yDif == 0) || (xDif == 0 && yDif == 1) || (xDif == 1 && yDif == 1)) {
+              printf("%s", stri);
+             return;
+          }
+      }
+  }
+  
+  printf("true"); 
+  return;          
+}
+
+int main(void) { 
+   
+  // keep this function call here
+  /* Note: In C you first have to initialize an array and set 
+     it equal to the stdin to test your code with arrays. */
+     
+  char * A[] = gets(stdin);
+  EightQueens(A);
+  return 0;
+    
+}
